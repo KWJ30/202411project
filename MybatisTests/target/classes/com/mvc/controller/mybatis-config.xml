@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <!-- MyBatis에서는 driver 속성이 생략되었을 때 자동으로 드라이버를 로드하지 않습니다. 
+        MyBatis는 기본적으로 Spring과 같은 프레임워크처럼 자동 드라이버 로딩을 지원하지 않기 때문에 
+        driver 속성을 명시적으로 지정해 주어야 합니다. 
+        Spring이나 HikariCP는 자체적으로 자동 드라이버 로딩 기능이 있기 때문에 driverClassName을 생략해도 
+        연결이 가능합니다. Spring은 DriverManager를 통해 JDBC 드라이버를 자동으로 감지하고 로드하는 메커니즘을 
+        포함하고 있으며, HikariCP도 비슷한 방식으로 동작합니다. 그러나 MyBatis는 이와 같은 메커니즘이 없기 때문에 
+        드라이버 클래스를 명시하지 않으면 오류가 발생할 수 있습니다.-->
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="musthave"/>
+        <property name="password" value="1234"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+   <mappers>
+    <mapper resource="com/mvc/controller/BoardMapper.xml"/>
+  </mappers>
+    
+</configuration>
